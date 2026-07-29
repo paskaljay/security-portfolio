@@ -1,6 +1,6 @@
 # Security Portfolio
 
-Hi, I'm [John Paschal] — currently building practical cybersecurity skills 
+Hi, I'm John Paschal — currently building practical cybersecurity skills 
 with a focus on web application security and bug bounty hunting. This 
 repo tracks my learning progress through writeups, notes, and tools as 
 I work toward contributing to real bug bounty programs.
