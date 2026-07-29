@@ -25,7 +25,7 @@ an attacker can inject SQL logic instead of a plain category name.
 
 ## Impact
 This vulnerability allows an attacker to bypass application logic 
-entirely — in this case viewing products that should be hidden from 
+entirely in this case viewing products that should be hidden from 
 regular users. In more severe real-world cases, similar injection 
 points can allow reading/modifying/deleting arbitrary database data, 
 or even full database compromise.
@@ -41,7 +41,7 @@ SQL injection — this caused a database error, confirming the input
 wasn't being sanitized or parameterized. From there, I injected a 
 payload combining an always-true condition with a comment sequence to 
 neutralize the rest of the query. This showed me how just two syntax 
-elements — a boolean tautology and a comment marker — can completely 
+elements a boolean tautology and a comment marker can completely 
 override an application's intended access control logic. It also 
 reinforced why testing for errors first is a fast, low-risk way to 
 confirm a vulnerability exists before committing to a full exploit.
