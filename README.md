@@ -14,7 +14,7 @@ I work toward contributing to real bug bounty programs.
 ## Writeups
 
 ### PortSwigger Web Security Academy
-- [SQL Injection - Retrieving Hidden Data](writeups/portswigger/sqli-hidden-data.md)
+- [SQL Injection - Retrieving Hidden Data](writeups/portswigger/sql-hidden-data.md)
 
 
 
