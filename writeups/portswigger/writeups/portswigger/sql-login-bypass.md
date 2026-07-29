@@ -41,12 +41,12 @@ application (like an accounts page) since username enumeration makes
 this kind of attack much easier.
 
 ## What I Learned
-This lab showed me that the same comment-based technique from the 
-previous SQLi lab can be reused for a very different purpose — instead 
+This lab showed me that the same comment based technique from the 
+previous SQLi lab can be reused for a very different purpose instead 
 of bypassing a filter condition, it can bypass authentication entirely 
 by removing the password check from the query. I also noticed that 
-client-side form validation (requiring a password field to be filled) 
-has no bearing on backend security — the frontend and backend need to 
+client side form validation (requiring a password field to be filled) 
+has no bearing on backend security the frontend and backend need to 
 be treated as two completely separate trust boundaries. This makes we 
 think that many login systems are less secure than they appear if 
-they rely on any client-side checks for security-critical logic.
+they rely on any client side checks for security critical logic.
