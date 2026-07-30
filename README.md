@@ -16,6 +16,7 @@ I work toward contributing to real bug bounty programs.
 ### PortSwigger Web Security Academy
 - [SQL Injection - Retrieving Hidden Data](writeups/portswigger/writeups/portswigger/sql-hidden-data.md)
 - [SQL injection vulnerability allowing login bypass](writeups/portswigger/writeups/portswigger/sql-login-bypass.md)
+- [SQL injection UNION attack, determining the number of columns returned by the query](writeups/portswigger/writeups/portswigger/sql-union-column-count.md)
 
 
 
