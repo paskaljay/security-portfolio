@@ -39,10 +39,10 @@ the only real fix is preventing the injection itself.
 
 ## What I Learned
 This lab taught me the `||` concatenation operator, which lets you 
-combine multiple values into a single string — useful when a query 
+combine multiple values into a single string useful when a query 
 only has one usable output column instead of one-per-value. I used a 
 delimiter (`~`) between the concatenated values purely for readability, 
 so the output could still be parsed visually into username and 
 password. This showed me that limiting displayed output columns isn't 
-a real defense against UNION-based extraction, since concatenation 
+a real defense against UNION based extraction, since concatenation 
 easily works around that constraint.
