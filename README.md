@@ -19,6 +19,7 @@ I work toward contributing to real bug bounty programs.
 - [SQL injection UNION attack, determining the number of columns returned by the query](writeups/portswigger/writeups/portswigger/sql-union-column-count.md)
 - [SQL injection UNION attack, finding a column containing text](writeups/portswigger/writeups/portswigger/sqli-union-finding-text-column.md)
 - [SQL injection UNION attack, retrieving data from other tables](writeups/portswigger/writeups/portswigger/writeups/portswigger/sql-union-retrieve-data.md)
+- [SQL injection UNION attack, retrieving data from other tables](writeups/portswigger/writeups/portswigger/writeups/portswigger/sql-union-retrieve-data.md)
 
 
 
