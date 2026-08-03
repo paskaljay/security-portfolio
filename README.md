@@ -22,6 +22,7 @@ I work toward contributing to real bug bounty programs.
 - [SQL injection UNION attack, retrieving multiple values in a single column](writeups/portswigger/writeups/portswigger/writeups/portswigger/sql-union-concatenation.md)
 - [SQL injection attack, querying the database type and version on MySQL and Microsoft](writeups/portswigger/writeups/sql-database-version-mysql.md)
 - [SQL injection attack, listing the database contents on non-Oracle databases](writeups/portswigger/writeups/portswigger/writeups/portswigger/sql-listing-database-contents.md)
+- [Blind SQL injection with conditional errors](writeups/portswigger/writeups/portswigger/blind-sql-conditional-errors.md)
 
 
 
