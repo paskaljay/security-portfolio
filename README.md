@@ -24,6 +24,7 @@ I work toward contributing to real bug bounty programs.
 - [SQL injection attack, listing the database contents on non-Oracle databases](writeups/portswigger/writeups/portswigger/writeups/portswigger/sql-listing-database-contents.md)
 - [Blind SQL injection with conditional errors](writeups/portswigger/writeups/portswigger/blind-sql-conditional-errors.md)
 - [Visible error-based SQL injection](writeups/portswigger/writeups/portswigger/sql-error-based-visible.md)
+- [Blind SQL injection with time delays and information retrieval](writeups/portswigger/writeups/portswigger/blind-sql-time-delays.md)
 
 
 
