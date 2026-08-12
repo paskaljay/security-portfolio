@@ -50,3 +50,50 @@ has failed. This reinforced that the underlying SQL injection
 technique from PortSwigger's login bypass lab transfers directly to 
 real applications, but finding the correct injection point requires 
 more investigation without guided hints.
+
+## Source Code Analysis (Find It / Fix It Challenge)
+
+After exploiting the vulnerability manually, Juice Shop's built-in 
+"Find It / Fix It" challenge revealed the actual vulnerable source code:
+
+```javascript
+models.sequelize.query(`SELECT * FROM Users WHERE email = 
+'${req.body.email || ''}' AND password = 
+'${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, 
+{ model: UserModel, plain: true })
+```
+
+The vulnerability came from directly embedding `req.body.email` (raw 
+user input) into the SQL string using JavaScript template literals, 
+with no sanitization. This matches exactly what I exploited: injecting 
+`' OR 1=1--` into the email field broke out of the intended string and 
+altered the query logic to always match, returning the first user in 
+the table (the admin account).
+
+## The Fix
+
+```javascript
+models.sequelize.query(`SELECT * FROM Users WHERE email = $1 AND 
+password = $2 AND deletedAt IS NULL`,
+  { bind: [ req.body.email, security.hash(req.body.password) ], 
+  model: models.User, plain: true })
+```
+
+The fix replaces direct string concatenation with a parameterized 
+query, using `$1` and `$2` as placeholders and passing the actual 
+values through a separate `bind` array. This ensures user input is 
+always treated as pure data by the database driver, never as 
+executable SQL syntax — even if someone submits the exact same 
+injection payload, it simply becomes a literal (non-matching) email 
+value instead of altering the query's logic.
+
+## What This Added To My Understanding
+Seeing the real vulnerable code, and then the real fix, connected 
+something I'd only described conceptually in every previous writeup's 
+"Fix" section. Parameterized queries aren't just an abstract best 
+practice  this is exactly what they look like in a real, production-
+style codebase, and exactly why they work: separating query structure 
+from user supplied data at the driver level, rather than trying to 
+sanitize or escape input manually.
+
+
