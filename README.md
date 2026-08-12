@@ -27,6 +27,12 @@ I work toward contributing to real bug bounty programs.
 - [Blind SQL injection with time delays and information retrieval](writeups/portswigger/writeups/portswigger/blind-sql-time-delays.md)
 
 
+  ## Projects
+
+  ## OWASP Juice Shop
+  - [SQL Injection Login Bypass](projects/juice-shop/sqli-login-bypass.md)
+
+
 
 
 ---
