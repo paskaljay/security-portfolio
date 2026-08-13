@@ -1,0 +1,77 @@
+# OWASP Juice Shop: DOM-Based XSS in Product Reviews
+
+## Summary
+The product review submission field is vulnerable to DOM-based XSS. 
+Unlike the customer feedback form (which properly sanitizes input), 
+the review field inserts user input directly into the page via 
+client-side JavaScript without escaping, allowing injected HTML/JS to 
+execute in the browser.
+
+## Discovery Process
+This challenge's hint specifically warned that it's "almost 
+indistinguishable from reflected XSS unless you look under the hood" 
+meaning the vulnerable field wasn't obvious at first glance, and 
+several payloads and fields needed to be tested before finding what 
+actually worked:
+
+1. First tried a basic HTML tag, `<h1><owasp>`, in the search bar 
+   this didn't trigger anything, just resulted in a blank/broken 
+   results page
+2. Tried `<script>alert('xss')</script>` next — this also didn't 
+   execute, likely because script tags inserted via certain DOM methods 
+   (like `innerHTML`) are not executed by browsers as a security 
+   measure, even when there's no server-side filtering
+3. Tried `<iframe src="javascript:alert('xss')">` in the search bar  
+   this successfully triggered an alert, confirming the search bar 
+   itself has a DOM XSS vulnerability, though this did not register as 
+   solving the "Forged Review" scoreboard challenge specifically, 
+   indicating the search bar is a separate, distinct XSS challenge
+4. Tried the Customer Feedback form's Comment field with a similar 
+   payload — the form accepted submission after solving its CAPTCHA, 
+   but no alert triggered, indicating this field properly sanitizes 
+   input before rendering it
+5. Used the same working iframe payload on the product review field 
+   instead, which successfully triggered the alert and was confirmed 
+   as solving this specific challenge
+
+## Vulnerability
+This is DOM-based XSS specifically (not reflected/server-based) — the 
+review text is inserted into the page's HTML via client-side 
+JavaScript without sanitization, meaning the malicious payload never 
+needs to round-trip through the server to execute; the browser 
+executes it directly when rendering the review.
+
+## Steps to Reproduce
+1. Navigate to a product page and open the review submission section
+2. In the review text field, enter:
+   `<iframe src="javascript:alert('xss')">`
+3. Submit the review
+4. The injected iframe executes its `javascript:` URL, triggering an 
+   alert box — confirming arbitrary JavaScript execution
+
+## Impact
+An attacker could submit a malicious review that executes JavaScript 
+in the browser of any user who later views that product's reviews — 
+potentially stealing session tokens, redirecting users to phishing 
+pages, or performing actions on their behalf without their knowledge.
+
+## Fix
+Sanitize and escape all user-submitted content before inserting it 
+into the DOM, or use safe rendering methods (like `textContent` 
+instead of `innerHTML`) that treat user input strictly as text, never 
+as executable HTML/JavaScript.
+
+## What I Learned
+This challenge involved genuine trial and error across multiple 
+payload types before finding one that worked — plain HTML tags and 
+`<script>` tags both failed, while an `<iframe>` with a `javascript:` 
+URL succeeded, which taught me that different injection techniques 
+bypass different filtering mechanisms in different ways; there's no 
+single universal XSS payload that works everywhere. I also learned 
+that not every input field on a page shares the same sanitization 
+behavior — the Customer Feedback form and the product review field 
+looked like they might behave similarly, but only one was actually 
+vulnerable. Additionally, triggering an alert doesn't automatically 
+confirm you've solved a *specific* tracked challenge — the search bar 
+and product review field turned out to be separate challenges 
+entirely, despite both being exploitable with the same payload.
