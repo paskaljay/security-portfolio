@@ -75,3 +75,35 @@ vulnerable. Additionally, triggering an alert doesn't automatically
 confirm you've solved a *specific* tracked challenge — the search bar 
 and product review field turned out to be separate challenges 
 entirely, despite both being exploitable with the same payload.
+
+## Correction: The Exact Payload That Mattered
+
+After further investigation, the scoreboard's specific hint for this 
+challenge revealed the exact expected payload:
+
+​```html
+<iframe src="javascript:alert(`xss`)">
+​```
+
+Note the use of **backticks** (`` ` ``) around `xss`, rather than 
+single quotes (`alert('xss')`), which is what I had been using 
+throughout my earlier attempts. Both are valid JavaScript syntax for 
+defining a string and both execute identically in the browser  my 
+single-quote version did successfully trigger alert popups in both the 
+search bar and product review field. However, the challenge's 
+completion check appears to look for an exact string match rather than 
+just confirming that *any* XSS payload executed, meaning the specific 
+backtick syntax was required for the scoreboard to register the 
+challenge as solved.
+
+## Additional Lesson Learned
+This taught me an important distinction between **confirming a 
+vulnerability exists** (which my original payload did, successfully, 
+multiple times) and **matching a specific automated success 
+condition** (which required the exact payload syntax). In a real bug 
+bounty context, proving the vulnerability exists — as I did with the 
+single-quote version — would be sufficient for a valid report; exact 
+payload matching only matters here because Juice Shop's challenge 
+tracking system checks for a specific string. This is a useful 
+reminder that CTF-style completion checks and real-world vulnerability 
+validation aren't always the same thing.
