@@ -107,3 +107,47 @@ payload matching only matters here because Juice Shop's challenge
 tracking system checks for a specific string. This is a useful 
 reminder that CTF-style completion checks and real-world vulnerability 
 validation aren't always the same thing.
+
+## Root Cause: The Actual Vulnerable Code (Find It / Fix It Challenge)
+
+After exploiting this blind (without seeing the code), Juice Shop's 
+Find It / Fix It challenge revealed the actual vulnerable line:
+
+​```javascript
+this.searchValue = this.sanitizer.bypassSecurityTrustHtml(queryParam)
+​```
+
+Angular (the framework this app is built with) automatically sanitizes 
+user input by default before rendering it — a strong built-in 
+protection against XSS. `bypassSecurityTrustHtml()` is a special 
+Angular function that explicitly disables this protection for a given 
+value, telling the framework to trust and render it as raw HTML 
+without sanitization. Here, it was applied directly to `queryParam`, 
+raw user input taken straight from the URL's search query string, 
+never validated or sanitized first.
+
+## The Fix
+
+​```javascript
+this.searchValue = queryParam
+​```
+
+The fix simply removes the `bypassSecurityTrustHtml()` call entirely, 
+assigning the raw query parameter directly. This allows Angular's 
+default sanitization to apply normally, meaning any injected HTML or 
+JavaScript in the search query gets safely escaped and rendered as 
+plain text rather than executed.
+
+## What This Added To My Understanding
+This was a genuinely valuable root-cause discovery: I had already 
+exploited this vulnerability without knowing why it existed, assuming 
+it was simply a case of missing sanitization. Seeing the actual code 
+revealed something more specific and honestly more common in 
+real-world applications a developer *explicitly* disabling a modern 
+framework's default XSS protection, likely for a legitimate seeming 
+reason (perhaps wanting to allow some HTML formatting in search 
+results) without properly scoping or validating that decision. This 
+reinforced an important lesson: frameworks like Angular and React are 
+often naturally resistant to XSS by default, and most real-world XSS 
+in these frameworks comes from developers deliberately opting out of 
+that protection, not from the framework itself failing.
