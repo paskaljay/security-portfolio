@@ -36,6 +36,7 @@ I work toward contributing to real bug bounty programs.
   - [Confidential Document via Unprotected File Directory](projects/juice-shop/sensitive-data-exposure-ftp.md)
   - [Exposed Metrics Endpoint (Observability Failure)](projects/juice-shop/exposed-metrics-endpoint.md)
   - [Juice Shop: Outdated Allowlist (Unvalidated Redirects)](projects/juice-shop/outdated-allowlist-redirect.md)
+  - [Repetitive Registration (Improper Input Validation)](projects/juice-shop/repetitive-registration-dry.md)
 
 
 
