@@ -34,7 +34,7 @@ I work toward contributing to real bug bounty programs.
   - [OWASP Juice Shop: Hidden Score Board Page](projects/juice-shop/juice-shop-challenges.md)
   - [OWASP Juice Shop: DOM-Based XSS in Product Reviews](projects/juice-shop/dom-xss-product-review.md)
   - [OWASP Juice Shop: Confidential Document via Unprotected File Directory](projects/juice-shop/sensitive-data-exposure-ftp.md)
-  - [OWASP Juice Shop: Exposed Metrics Endpoint (Observability Failure)]()
+  - [OWASP Juice Shop: Exposed Metrics Endpoint (Observability Failure)](projects/juice-shop/exposed-metrics-endpoint.md)
 
 
 
