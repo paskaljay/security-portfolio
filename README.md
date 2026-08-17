@@ -33,7 +33,7 @@ I work toward contributing to real bug bounty programs.
   - [SQL Injection Login Bypass](projects/juice-shop/sqli-login-bypass.md)
   - [OWASP Juice Shop: Hidden Score Board Page](projects/juice-shop/juice-shop-challenges.md)
   - [OWASP Juice Shop: DOM-Based XSS in Product Reviews](projects/juice-shop/dom-xss-product-review.md)
-  - [OWASP Juice Shop: Confidential Document via Unprotected File Directory]()
+  - [OWASP Juice Shop: Confidential Document via Unprotected File Directory](projects/juice-shop/sensitive-data-exposure-ftp.md)
 
 
 
