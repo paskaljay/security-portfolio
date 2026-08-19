@@ -7,7 +7,7 @@ I work toward contributing to real bug bounty programs.
 
 ## About Me
 - Learning path: web app security → bug bounty hunting
-- Currently working through: PortSwigger Web Security Academy, TryHackMe
+- Currently working through: PortSwigger Web Security Academy, Juice Shop
 - Interested in: SQL injection, XSS, access control vulnerabilities, 
   authentication flaws
 
