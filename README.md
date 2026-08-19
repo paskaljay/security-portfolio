@@ -37,6 +37,7 @@ I work toward contributing to real bug bounty programs.
   - [Exposed Metrics Endpoint (Observability Failure)](projects/juice-shop/exposed-metrics-endpoint.md)
   - [Juice Shop: Outdated Allowlist (Unvalidated Redirects)](projects/juice-shop/outdated-allowlist-redirect.md)
   - [Repetitive Registration (Improper Input Validation)](projects/juice-shop/repetitive-registration-dry.md)
+  - [Exposed Credentials (Sensitive Data Exposure)](projects/juice-shop/exposed-credentials.md)
 
 
 
