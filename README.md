@@ -40,6 +40,7 @@ I work toward contributing to real bug bounty programs.
   - [Exposed Credentials (Sensitive Data Exposure)](projects/juice-shop/exposed-credentials.md)
   - [Zero Stars (Improper Input Validation)](projects/juice-shop/zero-stars-rating-validation.md)
   - [Admin Section (Broken Access Control)](projects/juice-shop/admin-section-broken-access-control.md)
+  - [Password Strength (Broken Authentication)](projects/juice-shop/password-strength-broken-authentication.md)
 
 
 
