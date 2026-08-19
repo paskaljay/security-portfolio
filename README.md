@@ -38,7 +38,7 @@ I work toward contributing to real bug bounty programs.
   - [Juice Shop: Outdated Allowlist (Unvalidated Redirects)](projects/juice-shop/outdated-allowlist-redirect.md)
   - [Repetitive Registration (Improper Input Validation)](projects/juice-shop/repetitive-registration-dry.md)
   - [Exposed Credentials (Sensitive Data Exposure)](projects/juice-shop/exposed-credentials.md)
-
+  - [Zero Stars (Improper Input Validation)](projects/juice-shop/zero-stars-rating-validation.md)
 
 
 
