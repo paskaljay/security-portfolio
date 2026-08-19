@@ -39,6 +39,7 @@ I work toward contributing to real bug bounty programs.
   - [Repetitive Registration (Improper Input Validation)](projects/juice-shop/repetitive-registration-dry.md)
   - [Exposed Credentials (Sensitive Data Exposure)](projects/juice-shop/exposed-credentials.md)
   - [Zero Stars (Improper Input Validation)](projects/juice-shop/zero-stars-rating-validation.md)
+  - [Admin Section (Broken Access Control)](projects/juice-shop/admin-section-broken-access-control.md)
 
 
 
