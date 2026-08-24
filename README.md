@@ -42,6 +42,7 @@ I work toward contributing to real bug bounty programs.
   - [Admin Section (Broken Access Control)](projects/juice-shop/admin-section-broken-access-control.md)
   - [Password Strength (Broken Authentication)](projects/juice-shop/password-strength-broken-authentication.md)
   - [View Basket (Broken Access Control / IDOR)](projects/juice-shop/view-basket-idor.md)
+  - [Deprecated Interface (Security Misconfiguration)](projects/juice-shop/deprecated-b2b-interface.md)
 
 
 
