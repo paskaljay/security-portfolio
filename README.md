@@ -44,6 +44,7 @@ I work toward contributing to real bug bounty programs.
   - [View Basket (Broken Access Control / IDOR)](projects/juice-shop/view-basket-idor.md)
   - [Deprecated Interface (Security Misconfiguration)](projects/juice-shop/deprecated-b2b-interface.md)
   - [Empty User Registration (Improper Input Validation)](projects/juice-shop/empty-user-registration.md)
+  - [Five-Star Feedback (Broken Access Control)](projects/juice-shop/five-star-feedback-admin.md)
 
 
 
