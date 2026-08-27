@@ -45,6 +45,8 @@ I work toward contributing to real bug bounty programs.
   - [Deprecated Interface (Security Misconfiguration)](projects/juice-shop/deprecated-b2b-interface.md)
   - [Empty User Registration (Improper Input Validation)](projects/juice-shop/empty-user-registration.md)
   - [Five-Star Feedback (Broken Access Control)](projects/juice-shop/five-star-feedback-admin.md)
+  - [Login MC SafeSearch (Sensitive Data Exposure / OSINT)](projects/juice-shop/mc-safesearch-osint.md)
+
 
 
 
