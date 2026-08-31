@@ -46,6 +46,7 @@ I work toward contributing to real bug bounty programs.
   - [Empty User Registration (Improper Input Validation)](projects/juice-shop/empty-user-registration.md)
   - [Five-Star Feedback (Broken Access Control)](projects/juice-shop/five-star-feedback-admin.md)
   - [Login MC SafeSearch (Sensitive Data Exposure / OSINT)](projects/juice-shop/mc-safesearch-osint.md)
+  - [Meta Geo Stalking (Sensitive Data Exposure)](projects/juice-shop/meta-geo-stalking-sensitive-data-exposure.md)
 
 
 
