@@ -48,6 +48,7 @@ I work toward contributing to real bug bounty programs.
   - [Login MC SafeSearch (Sensitive Data Exposure / OSINT)](projects/juice-shop/mc-safesearch-osint.md)
   - [Meta Geo Stalking (Sensitive Data Exposure)](projects/juice-shop/meta-geo-stalking-sensitive-data-exposure.md)
   - [Password Hash Leak (Sensitive Data Exposure)](projects/juice-shop/password-hash-leak.md)
+  - [Security Policy](projects/juice-shop/security-policy-well-known.md)
 
 
 
