@@ -50,6 +50,7 @@ I work toward contributing to real bug bounty programs.
   - [Password Hash Leak (Sensitive Data Exposure)](projects/juice-shop/password-hash-leak.md)
   - [Security Policy](projects/juice-shop/security-policy-well-known.md)
   - [Visual Geo Stalking (Sensitive Data Exposure / OSINT)](projects/juice-shop/visual-geo-stalking-osint.md)
+  - [Weird Crypto (Cryptographic Issues)](projects/juice-shop/weird-crypto-md5.md)
 
 
 
