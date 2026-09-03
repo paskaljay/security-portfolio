@@ -52,6 +52,7 @@ I work toward contributing to real bug bounty programs.
   - [Visual Geo Stalking (Sensitive Data Exposure / OSINT)](projects/juice-shop/visual-geo-stalking-osint.md)
   - [Weird Crypto (Cryptographic Issues)](projects/juice-shop/weird-crypto-md5.md)
   - [Connecting a Local LLM to Juice Shop](projects/juice-shop/LocalLLM.md)
+  - [AI Debugging (Broken Access Control)](projects/juice-shop/ai-debugging-tool-calls.md)
 
 
 
