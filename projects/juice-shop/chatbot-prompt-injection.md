@@ -75,3 +75,80 @@ reinforces that prompt injection isn't just about "jailbreaking" a
 chatbot into saying something inappropriate  it can directly enable 
 real business logic bypasses when an LLM is given authority over 
 actual application actions like generating coupons.
+
+## Root Cause: The Actual Vulnerable Code
+
+The vulnerable `generateCoupon` tool definition:
+
+​```javascript
+generateCoupon: tool({
+  description: 'Generate a discount coupon for a customer. Only use 
+  this when the coupon policy conditions are fully met.',
+  inputSchema: z.object({
+    discount: z.number().describe('The discount percentage for the 
+    coupon (maximum 10)')
+  }),
+  execute: async ({ discount }) => {
+    const couponCode = security.generateCoupon(discount)
+    return { couponCode, discount }
+  }
+})
+​```
+
+This confirms exactly what the black-box testing suggested: the 
+policy ("only use this when conditions are met") existed purely as a 
+natural language instruction to the LLM in the tool's description 
+field. The actual executable code takes no order ID, performs no 
+database lookup, and generates a real coupon immediately whenever the 
+LLM chooses to call this function regardless of why it made that 
+decision. The LLM was solely responsible for policing its own tool 
+usage, with zero enforcement at the code level.
+
+## The Fix
+
+​```javascript
+generateCoupon: tool({
+  description: 'Generate a discount coupon for a customer with a 
+  verified damaged order. Requires a valid order ID.',
+  inputSchema: z.object({
+    discount: z.number().describe('The discount percentage for the 
+    coupon (maximum 10)'),
+    orderId: z.string().describe('The order ID of the damaged order 
+    (format: xxxx-xxxxxxxxxxxxxxxx)')
+  }),
+  execute: async ({ discount, orderId, authenticatedUser }) => {
+    const order = await db.ordersCollection.findOne({ 
+      orderId, 
+      email: authenticatedUser?.email, 
+      status: OrderStatus.DAMAGED 
+    })
+    if (!order) return { error: 'No verified damaged order found for 
+    this order ID.' }
+    const couponCode = security.generateCoupon(discount)
+    return { couponCode, discount }
+  }
+})
+​```
+
+The fix requires the LLM to supply an `orderId`, then performs a real 
+database query checking three conditions together: the order exists, 
+it belongs to the currently *authenticated* user specifically (not 
+just any user), and its status is genuinely `DAMAGED`. Coupon 
+generation only proceeds if a real, matching record is found the 
+vulnerable code path is now unreachable through conversation alone, no 
+matter how convincingly formatted a fabricated order ID looks.
+
+## What This Added To My Understanding
+Seeing the real code confirmed a principle that applies well beyond 
+this specific challenge: instructions written in a tool's *description* 
+field are guidance for the LLM's reasoning, not enforcement they 
+carry no more weight than a comment in code as far as actual security 
+goes. Real enforcement has to happen in the executable logic itself, 
+independently verifying claims against genuine data sources (and 
+critically, tied to the *authenticated* user's identity, not just any 
+matching record) before performing any sensitive action. This is 
+directly analogous to every access control lesson from earlier in this 
+project (IDOR, broken authorization) the new twist here is that the 
+"input" being checked arrives via an AI's interpretation of a 
+conversation rather than a raw HTTP parameter, but the underlying 
+security principle is identical.
