@@ -53,6 +53,8 @@ I work toward contributing to real bug bounty programs.
   - [Weird Crypto (Cryptographic Issues)](projects/juice-shop/weird-crypto-md5.md)
   - [Connecting a Local LLM to Juice Shop](projects/juice-shop/LocalLLM.md)
   - [AI Debugging (Broken Access Control)](projects/juice-shop/ai-debugging-tool-calls.md)
+  - [Chatbot Prompt Injection (Injection)](projects/juice-shop/chatbot-prompt-injection.md)
+    
 
 
 
