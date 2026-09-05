@@ -55,6 +55,7 @@ I work toward contributing to real bug bounty programs.
   - [AI Debugging (Broken Access Control)](projects/juice-shop/ai-debugging-tool-calls.md)
   - [Chatbot Prompt Injection (Injection)](projects/juice-shop/chatbot-prompt-injection.md)
   - [Login Jim (Sensitive Data Exposure)](projects/juice-shop/login-jim-weak-credentials.md)
+  - [Forged Feedback (Broken Access Control / IDOR)](projects/juice-shop/forged-feedback-idor.md)
     
 
 
