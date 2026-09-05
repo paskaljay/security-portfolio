@@ -54,6 +54,7 @@ I work toward contributing to real bug bounty programs.
   - [Connecting a Local LLM to Juice Shop](projects/juice-shop/LocalLLM.md)
   - [AI Debugging (Broken Access Control)](projects/juice-shop/ai-debugging-tool-calls.md)
   - [Chatbot Prompt Injection (Injection)](projects/juice-shop/chatbot-prompt-injection.md)
+  - [Login Jim (Sensitive Data Exposure)](projects/juice-shop/login-jim-weak-credentials.md)
     
 
 
