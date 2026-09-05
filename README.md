@@ -57,6 +57,7 @@ I work toward contributing to real bug bounty programs.
   - [Login Jim (Sensitive Data Exposure)](projects/juice-shop/login-jim-weak-credentials.md)
   - [Forged Feedback (Broken Access Control / IDOR)](projects/juice-shop/forged-feedback-idor.md)
   - [Login Bender (SQL Injection)](projects/juice-shop/login-bender-sqli.md)
+  - [Admin Registration (Improper Input Validation)](projects/juice-shop/admin-registration-role-injection.md)
     
 
 
