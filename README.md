@@ -59,6 +59,7 @@ I work toward contributing to real bug bounty programs.
   - [Login Bender (SQL Injection)](projects/juice-shop/login-bender-sqli.md)
   - [Admin Registration (Improper Input Validation)](projects/juice-shop/admin-registration-role-injection.md)
   - [Bjoern's Favorite Pet (Broken Authentication / OSINT)](projects/juice-shop/bjoern-favorite-pet-osint.md)
+  - [CAPTCHA Bypass (Broken Anti-Automation)](projects/juice-shop/captcha-bypass-anti-automation.md)
     
 
 
