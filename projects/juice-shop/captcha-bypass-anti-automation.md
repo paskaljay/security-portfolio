@@ -19,17 +19,17 @@ token, rather than a one-time proof of human interaction.
 ## Steps to Reproduce
 1. Submit one legitimate feedback entry through the UI, solving the CAPTCHA
    normally. Capture this request in Burp Suite.
-   - Example body included a solved pair: `captchaId: 2`, `captcha: "11"`.
+   Example body included a solved pair: `captchaId: 2`, `captcha: "11"`.
 2. In Burp Repeater, resend the exact same captured request (same
    `captchaId`/`captcha`) multiple times.
-   - Result: every replay returned `201 Created` — confirming the CAPTCHA
+   Result: every replay returned `201 Created` — confirming the CAPTCHA
      answer was never invalidated after first use.
 3. Send the request to Burp Intruder.
-   - **Positions:** mark only the `comment` field as the variable position,
+    **Positions:** mark only the `comment` field as the variable position,
      keeping `captchaId` and `captcha` fixed.
-   - **Payloads:** Numbers payload type, 1 → 15, step 1 (generates 15 unique
+   **Payloads:** Numbers payload type, 1 → 15, step 1 (generates 15 unique
      comment values so each request is a distinct feedback entry).
-   - **Attack type:** Sniper.
+    **Attack type:** Sniper.
 4. Start the attack.
 5. Result: all 16 requests (1 baseline + 15 payloads) returned `201 Created`,
    each responding in well under 50ms — completing the full batch in a
@@ -40,9 +40,9 @@ token, rather than a one-time proof of human interaction.
 ## Impact
 An attacker can script unlimited feedback (or any other CAPTCHA-protected
 action) submissions, enabling:
-- Spam / content flooding of user-facing feedback systems
+- Spam / content flooding of user facing feedback systems
 - Automated abuse of any other endpoint reusing the same CAPTCHA pattern
-- Defeating rate-limiting/anti-bot protections entirely, which can be a
+- Defeating rate limiting/anti-bot protections entirely, which can be a
   stepping stone to larger automated attacks (credential stuffing, fake
   account creation, etc. if the same CAPTCHA implementation is reused
   elsewhere)
@@ -54,7 +54,7 @@ flow / CAPTCHA bypass**.
 
 ## Fix
 - Invalidate the CAPTCHA (`captchaId`) server-side immediately after its
-  first successful use — a used CAPTCHA should never validate again.
+  first successful use a used CAPTCHA should never validate again.
 - Tie each CAPTCHA to a single session/request and expire it after a short
   time window regardless of use.
 - Add server-side rate limiting on the feedback endpoint independent of the
